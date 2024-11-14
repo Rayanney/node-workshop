@@ -1,27 +1,28 @@
-// 
+const http = require('http');
+const port = 3001;
+const fs = require('fs');
 
-
-
-const http = require('http')
-const port = 3000
-const fs =require('fs');
-const { error } = require('console');
-const server = http.createServer(function(req,res){
-    fs.readFile('index.html',(err,data) =>{   
-        res.writeHead(200, {'Content-Type' : 'text/html'});
-        res.write(data);
-        return res.end();        
+const server = http.createServer(function (req, res) {
+    fs.readFile('note.txt', (err, data) => {
+        if (err) {
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.write('Internal Server Error');
+            res.end();
+            console.error('Error reading file:', err);
+        } else {
+            res.writeHead(200, { 'Content-Type': 'text/plain' });
+            res.write(data);
+            res.end();
+        }
     });
-})
-server.listen(port,function(err){
-    if(err){
-        console.log('no',err)
+});
+
+server.listen(port, function (err) {
+    if (err) {
+        console.log('Error starting server:', err);
+    } else {
+        console.log('Server is listening on port', port);
     }
-    else{
-        console.log('yes',port)
-    }
- })
+});
 
-const firstFile='note.txt'
-
-
+const firstFile = 'note.txt';
