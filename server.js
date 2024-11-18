@@ -20,9 +20,9 @@ const server = http.createServer(function (req, res) {
 });
 
 // Create File
-const data = "Hello Flurry Derivsh";
+const data = "Hello Flurry Go my Code 2024";
 
-fs.writeFile('Newfile.txt', data, (err) =>{
+fs.writeFile('Newfile23.txt', data, (err) =>{
     if(err){
         console.error('Error creating file:', err);
     }else{
@@ -32,7 +32,7 @@ fs.writeFile('Newfile.txt', data, (err) =>{
 });
 //Update File
 
-fs.appendFile("Newfile1.txt"," Flurry Devrish GO my COde", (err) =>{
+fs.appendFile("Newfile1.txt","\r\n Flurry Devrish GO my COde", (err) =>{
     if(err){
         console.error('Error creating file:', err);
     }else{
